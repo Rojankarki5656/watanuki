@@ -33,7 +33,7 @@ const Top10Layout = () => {
         </div>
       </div>
       <div className="box bg-lightbg px-2 sm:px-4 py-2">
-        {topTen[selectedTab]?.map((item) => (
+        {topTen?.[selectedTab]?.map((item) => (
           <div key={item.id} className="flex items-center gap-2 sm:gap-5">
             <h1
               className={`rank text-base sm:text-2xl font-extrabold ${

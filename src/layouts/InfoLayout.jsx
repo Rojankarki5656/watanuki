@@ -20,6 +20,16 @@ const InfoLayout = ({ data, showBigPoster }) => {
     "#d8b2ab",
     "#86e3ce",
   ];
+
+  const formatStudioPath = (studioName) => {
+    if (typeof studioName === "string") {
+      // Only call methods if it is confirmed to be a string
+      return `/producer/${studioName.toLowerCase().replace(" ", "-")}`;
+    }
+    // Return a safe fallback path if the data is bad
+    return "/producer/unknown";
+  };
+
   return (
     <>
       <div className="banner min-h-[700px] relative w-full bg-[#262525] pt-10 md:pt-20">
@@ -152,12 +162,10 @@ const InfoLayout = ({ data, showBigPoster }) => {
               <>
                 <div className="studio">
                   <span>Studio : </span>
-                  <Link
-                    to={`/producer/${data.studios
-                      .toLowerCase()
-                      .replace(" ", "-")}`}
-                  >
-                    <span className="text-primary">{data.studios}</span>
+                  <Link to={formatStudioPath(data.studios)}>
+                    <span className="text-primary">
+                      {data.studios || "Unknown Studio"}
+                    </span>
                   </Link>
                 </div>
                 <div className="lightBorder"></div>
